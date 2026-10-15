@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ativa Informática | Assistência técnica de celulares e computadores</title>
+<meta name="description" content="Assistência técnica de celulares e computadores, troca de telas, formatação, upgrade e preços públicos. Peça seu orçamento pelo WhatsApp.">
+<meta name="theme-color" content="#080B12">
+<meta property="og:title" content="Ativa Informática">
+<meta property="og:description" content="Assistência técnica de celulares e computadores. Consulte preços e peça orçamento pelo WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080B12'/%3E%3Cpath d='M32 10 14 54h9l3-8h12l3 8h9zm0 16 4 12H28z' fill='%2300A6FF'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#inicio">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio" aria-label="Ativa Informática, início"><b>ATIVA</b><span>INFORMÁTICA</span></a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#catalogo">Aparelhos e preços</a>
+      <a href="#promocoes" id="nav-promo">Promoções</a>
+      <a href="#sobre">Sobre a loja</a>
+      <a href="#contato">Contato</a>
+      <a class="btn btn-azul" data-wa="Olá, Ativa Informática! Gostaria de solicitar um orçamento.">Solicitar orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <h1>Seu celular ou computador precisa de reparo?</h1>
+      <p>Assistência técnica, manutenção e soluções em informática para manter seus equipamentos funcionando.</p>
+      <div class="acoes">
+        <a class="btn btn-azul" href="#servicos">Ver serviços</a>
+        <a class="btn btn-linha" href="#catalogo">Consultar preços</a>
+        <a class="btn btn-zap" data-wa="Olá, Ativa Informática! Vim pelo site e gostaria de atendimento.">Falar pelo WhatsApp</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 320 360" aria-hidden="true" fill="none" stroke="#00A6FF" stroke-width="2" stroke-linecap="round">
+      <rect x="95" y="20" width="130" height="260" rx="22" stroke-width="3"/>
+      <rect x="107" y="44" width="106" height="196" rx="8" stroke="#007BFF"/>
+      <circle cx="160" cy="262" r="8"/>
+      <path d="M130 100h60M130 130h40M130 160h60M130 190h30" stroke="#007BFF"/>
+      <path class="trace" d="M95 80H30v60h30M95 200H20M225 120h60v50h-30M225 230h70v70h-90v40"/>
+      <circle cx="60" cy="140" r="5" fill="#00A6FF"/><circle cx="20" cy="200" r="5" fill="#00A6FF"/>
+      <circle cx="255" cy="170" r="5" fill="#00A6FF"/><circle cx="205" cy="340" r="5" fill="#00A6FF"/>
+    </svg>
+  </div>
+</section>
+
+<section id="servicos" class="sec">
+  <div class="wrap">
+    <h2>Serviços</h2>
+    <p class="sub">Escolha o atendimento e consulte pelo WhatsApp.</p>
+    <div class="grade" id="lista-servicos"></div>
+  </div>
+</section>
+
+<section id="catalogo" class="sec alt">
+  <div class="wrap">
+    <h2>Aparelhos e preços</h2>
+    <p class="sub">Pesquise o modelo do seu celular e veja o valor do reparo.</p>
+    <div class="filtros">
+      <label class="campo">Buscar marca ou modelo
+        <input type="search" id="busca" placeholder="Ex.: Galaxy A05" autocomplete="off"></label>
+      <label class="campo">Marca
+        <select id="f-marca"></select></label>
+      <label class="campo">Tipo de serviço
+        <select id="f-cat"></select></label>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <div class="grade" id="lista-aparelhos"></div>
+
+    <h3 class="subtit">Alexa e receptores</h3>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar produtos"></div>
+    <div class="grade" id="lista-produtos"></div>
+    <p class="aviso" id="aviso-produtos"></p>
+  </div>
+</section>
+
+<section id="promocoes" class="sec promo" hidden>
+  <div class="wrap">
+    <h2>Promoções</h2>
+    <div class="grade" id="lista-promos"></div>
+  </div>
+</section>
+
+<section id="sobre" class="sec">
+  <div class="wrap estreito">
+    <h2>Tecnologia e cuidado com seus equipamentos</h2>
+    <p>A Ativa Informática oferece soluções em assistência técnica de celulares e computadores, além de serviços de informática para facilitar o dia a dia dos clientes. Consulte nossos serviços e entre em contato para solicitar seu orçamento.</p>
+    <ul class="pontos">
+      <li>Atendimento personalizado</li>
+      <li>Clareza nos valores</li>
+      <li>Contato fácil pelo WhatsApp</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contato" class="sec alt">
+  <div class="wrap">
+    <h2>Contato e localização</h2>
+    <div class="grade contato" id="lista-contato"></div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rod-in">
+    <div>
+      <a class="marca" href="#inicio"><b>ATIVA</b><span>INFORMÁTICA</span></a>
+      <p>Assistência técnica de celulares e computadores, serviços de informática, Alexas e receptores.</p>
+    </div>
+    <div>
+      <p><a href="#servicos">Serviços</a> · <a href="#catalogo">Preços</a> · <a href="#sobre">Sobre</a> · <a href="#contato">Contato</a></p>
+      <p id="rod-contato"></p>
+    </div>
+  </div>
+  <div class="wrap rod-fim">
+    <p>© <span id="ano"></span> Ativa Informática. Todos os direitos reservados.</p>
+    <p>Os preços podem precisar de confirmação antes da execução do serviço.</p>
+  </div>
+</footer>
+
+<a class="flutuante" data-wa="Olá, Ativa Informática! Gostaria de atendimento." aria-label="Falar pelo WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800 0-1.300.7-2 1-2.200.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.2.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>
+</a>
+
+<script src="dados.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
