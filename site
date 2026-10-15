@@ -1,0 +1,473 @@
+/* ==========================================================
+   DADOS DO SITE - Ativa Informática
+   Edite SOMENTE este arquivo para mudar preços, aparelhos,
+   promoções e contatos. Preços são números (ex.: 200 ou 199.9).
+   Use ponto, não vírgula. Deixe sem preço para mostrar
+   "Consulte o valor".
+   ========================================================== */
+
+const CONFIG = {
+  nome: "Ativa Informática",
+  whatsapp: "5566996805419",
+  telefone: "(66) 99680-5419",
+  instagram: "ativa_informaticaa",
+  email: "ativainformatica652@gmail.com",
+  endereco: "Rua Goiás, nº 21, Vila Concórdia",
+  cidade: "",      // preencha para melhorar o Google Maps. Ex.: "Cidade - MT"
+  mapsUrl: "",     // opcional: cole aqui o link do Google Maps da loja
+  horario: ""      // Ex.: "Segunda a sexta, 8h às 18h". Vazio = "em breve"
+};
+
+/* Marcas e tipos de reparo que aparecem nos filtros.
+   Marcas usadas nos aparelhos entram nos filtros automaticamente. */
+const MARCAS = ["Samsung", "Motorola", "Xiaomi", "Infinix"];
+const CATEGORIAS_REPARO = ["Troca de tela", "Troca de bateria", "Conector de carga", "Software", "Outros"];
+
+/* Cards da seção Serviços. Ícones: celular, tela, notebook, sistema,
+   upgrade, programas, impressao, digital */
+const SERVICOS = [
+  { icone: "celular", titulo: "Assistência técnica de celulares", descricao: "Diagnóstico e reparo para Samsung, Motorola, Xiaomi, Infinix e outras marcas." },
+  { icone: "tela", titulo: "Troca de telas e displays", descricao: "Substituição de tela e display com orçamento claro." },
+  { icone: "notebook", titulo: "Manutenção de computadores e notebooks", descricao: "Limpeza, reparo e solução de lentidão e defeitos." },
+  { icone: "sistema", titulo: "Formatação e instalação de sistemas", descricao: "Instalação e configuração de sistema operacional." },
+  { icone: "upgrade", titulo: "Upgrade de computadores", descricao: "Mais velocidade e desempenho para o seu equipamento." },
+  { icone: "programas", titulo: "Instalação de programas e drivers", descricao: "Programas e drivers instalados e funcionando." },
+  { icone: "impressao", titulo: "Impressões e cópias", descricao: "Impressões e cópias para o dia a dia." },
+  { icone: "digital", titulo: "Serviços digitais e outros atendimentos", descricao: "Pergunte pelo atendimento que você precisa." }
+];
+
+/* Catálogo de reparos. Comece vazio e adicione um bloco por serviço:
+   { marca:"Samsung", modelo:"Galaxy A05", categoria:"Troca de tela",
+     descricao:"", preco:0, precoPromo:null, obs:"", disponivel:true },
+   Sem preco = "Consulte o valor". precoPromo só aparece se existir. */
+const APARELHOS = [
+];
+
+/* Alexas e receptores à venda. grupo: "Alexa" ou "Receptores e TV box".
+   disponivel:false mostra "Indisponível". */
+const PRODUTOS = [
+  { grupo: "Alexa", nome: "Alexa Echo Dot 5", preco: 425, obs: "Cores: preta, azul ou branca", disponivel: true },
+  { grupo: "Alexa", nome: "Alexa Echo Dot Max", preco: 650, obs: "Cor: preta", disponivel: true },
+  { grupo: "Alexa", nome: "Alexa Echo Show 5", preco: 620, obs: "Cores: preta ou branca", disponivel: true },
+  { grupo: "Alexa", nome: "Alexa Echo Show 8", preco: 950, obs: "Cor: branca", disponivel: false },
+  { grupo: "Receptores e TV box", nome: "HTV-9", preco: 1100, obs: "", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "BTV B13", preco: 880, obs: "Já com app liberado (ESPN liberado)", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "UNI TV S1", preco: 380, obs: "Caixa preta", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "UNI TV V10", preco: 290, obs: "Caixa branca", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "EAI PRO TV", preco: 330, obs: "", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "Amazon Fire Stick 4K", preco: 300, obs: "", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "Xiaomi Mi TV 4K (lançamento)", preco: 300, obs: "", disponivel: true },
+  { grupo: "Receptores e TV box", nome: "Xiaomi Mi TV Stick Full HD", preco: 250, obs: "", disponivel: true }
+];
+const AVISO_PRODUTOS = "Garantia de 30 dias do aparelho. Não garantimos servidor.";
+
+/* Promoções. Datas no formato "AAAA-MM-DD". Só aparecem dentro do período.
+   { titulo:"", descricao:"", modelos:["Samsung A05"], servico:"Troca de tela",
+     precoNormal:200, precoPromo:150, inicio:"2026-10-01", fim:"2026-10-31" } */
+const PROMOCOES = [
+];
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ativa Informática | Assistência técnica de celulares e computadores</title>
+<meta name="description" content="Assistência técnica de celulares e computadores, troca de telas, formatação, upgrade e preços públicos. Peça seu orçamento pelo WhatsApp.">
+<meta name="theme-color" content="#080B12">
+<meta property="og:title" content="Ativa Informática">
+<meta property="og:description" content="Assistência técnica de celulares e computadores. Consulte preços e peça orçamento pelo WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080B12'/%3E%3Cpath d='M32 10 14 54h9l3-8h12l3 8h9zm0 16 4 12H28z' fill='%2300A6FF'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#inicio">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio" aria-label="Ativa Informática, início"><b>ATIVA</b><span>INFORMÁTICA</span></a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#catalogo">Aparelhos e preços</a>
+      <a href="#promocoes" id="nav-promo">Promoções</a>
+      <a href="#sobre">Sobre a loja</a>
+      <a href="#contato">Contato</a>
+      <a class="btn btn-azul" data-wa="Olá, Ativa Informática! Gostaria de solicitar um orçamento.">Solicitar orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <h1>Seu celular ou computador precisa de reparo?</h1>
+      <p>Assistência técnica, manutenção e soluções em informática para manter seus equipamentos funcionando.</p>
+      <div class="acoes">
+        <a class="btn btn-azul" href="#servicos">Ver serviços</a>
+        <a class="btn btn-linha" href="#catalogo">Consultar preços</a>
+        <a class="btn btn-zap" data-wa="Olá, Ativa Informática! Vim pelo site e gostaria de atendimento.">Falar pelo WhatsApp</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 320 360" aria-hidden="true" fill="none" stroke="#00A6FF" stroke-width="2" stroke-linecap="round">
+      <rect x="95" y="20" width="130" height="260" rx="22" stroke-width="3"/>
+      <rect x="107" y="44" width="106" height="196" rx="8" stroke="#007BFF"/>
+      <circle cx="160" cy="262" r="8"/>
+      <path d="M130 100h60M130 130h40M130 160h60M130 190h30" stroke="#007BFF"/>
+      <path class="trace" d="M95 80H30v60h30M95 200H20M225 120h60v50h-30M225 230h70v70h-90v40"/>
+      <circle cx="60" cy="140" r="5" fill="#00A6FF"/><circle cx="20" cy="200" r="5" fill="#00A6FF"/>
+      <circle cx="255" cy="170" r="5" fill="#00A6FF"/><circle cx="205" cy="340" r="5" fill="#00A6FF"/>
+    </svg>
+  </div>
+</section>
+
+<section id="servicos" class="sec">
+  <div class="wrap">
+    <h2>Serviços</h2>
+    <p class="sub">Escolha o atendimento e consulte pelo WhatsApp.</p>
+    <div class="grade" id="lista-servicos"></div>
+  </div>
+</section>
+
+<section id="catalogo" class="sec alt">
+  <div class="wrap">
+    <h2>Aparelhos e preços</h2>
+    <p class="sub">Pesquise o modelo do seu celular e veja o valor do reparo.</p>
+    <div class="filtros">
+      <label class="campo">Buscar marca ou modelo
+        <input type="search" id="busca" placeholder="Ex.: Galaxy A05" autocomplete="off"></label>
+      <label class="campo">Marca
+        <select id="f-marca"></select></label>
+      <label class="campo">Tipo de serviço
+        <select id="f-cat"></select></label>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <div class="grade" id="lista-aparelhos"></div>
+
+    <h3 class="subtit">Alexa e receptores</h3>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar produtos"></div>
+    <div class="grade" id="lista-produtos"></div>
+    <p class="aviso" id="aviso-produtos"></p>
+  </div>
+</section>
+
+<section id="promocoes" class="sec promo" hidden>
+  <div class="wrap">
+    <h2>Promoções</h2>
+    <div class="grade" id="lista-promos"></div>
+  </div>
+</section>
+
+<section id="sobre" class="sec">
+  <div class="wrap estreito">
+    <h2>Tecnologia e cuidado com seus equipamentos</h2>
+    <p>A Ativa Informática oferece soluções em assistência técnica de celulares e computadores, além de serviços de informática para facilitar o dia a dia dos clientes. Consulte nossos serviços e entre em contato para solicitar seu orçamento.</p>
+    <ul class="pontos">
+      <li>Atendimento personalizado</li>
+      <li>Clareza nos valores</li>
+      <li>Contato fácil pelo WhatsApp</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contato" class="sec alt">
+  <div class="wrap">
+    <h2>Contato e localização</h2>
+    <div class="grade contato" id="lista-contato"></div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rod-in">
+    <div>
+      <a class="marca" href="#inicio"><b>ATIVA</b><span>INFORMÁTICA</span></a>
+      <p>Assistência técnica de celulares e computadores, serviços de informática, Alexas e receptores.</p>
+    </div>
+    <div>
+      <p><a href="#servicos">Serviços</a> · <a href="#catalogo">Preços</a> · <a href="#sobre">Sobre</a> · <a href="#contato">Contato</a></p>
+      <p id="rod-contato"></p>
+    </div>
+  </div>
+  <div class="wrap rod-fim">
+    <p>© <span id="ano"></span> Ativa Informática. Todos os direitos reservados.</p>
+    <p>Os preços podem precisar de confirmação antes da execução do serviço.</p>
+  </div>
+</footer>
+
+<a class="flutuante" data-wa="Olá, Ativa Informática! Gostaria de atendimento." aria-label="Falar pelo WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800 0-1.300.7-2 1-2.200.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.2.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>
+</a>
+
+<script src="dados.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const num = (v) => typeof v === "number" && isFinite(v);
+  const brl = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  const wa = (t) => "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(t);
+  const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const lista = (v) => (Array.isArray(v) ? v : []);
+
+  const ICONES = {
+    celular: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+    tela: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M9 7l6 8M15 7l-6 8"/>',
+    notebook: '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 20h20"/>',
+    sistema: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+    upgrade: '<rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>',
+    programas: '<path d="M12 3v12m0 0l-4-4m4 4l4-4M5 20h14"/>',
+    impressao: '<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><rect x="7" y="14" width="10" height="7"/>',
+    digital: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'
+  };
+  const icone = (n) => '<div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">' + (ICONES[n] || ICONES.digital) + "</svg></div>";
+
+  function preco(normal, promo) {
+    if (num(promo)) return '<div class="preco">' + (num(normal) ? "<s>" + brl(normal) + "</s>" : "") + brl(promo) + "</div>";
+    if (num(normal)) return '<div class="preco">' + brl(normal) + "</div>";
+    return '<div class="preco consulte">Consulte o valor</div>';
+  }
+
+  // Todo elemento com data-wa vira link do WhatsApp
+  function ligarWa(raiz) {
+    (raiz || document).querySelectorAll("[data-wa]").forEach((a) => {
+      a.href = wa(a.dataset.wa);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+  }
+  const btnWa = (txt, msg, classe) => '<a class="btn ' + (classe || "btn-azul btn-peq") + '" data-wa="' + esc(msg) + '">' + esc(txt) + "</a>";
+
+  // Serviços
+  function servicos() {
+    $("#lista-servicos").innerHTML = lista(SERVICOS).map((s) =>
+      '<article class="card">' + icone(s.icone) + "<h3>" + esc(s.titulo) + "</h3><p>" + esc(s.descricao) + "</p>" +
+      btnWa("Consultar serviço", "Olá, Ativa Informática! Gostaria de informações sobre: " + s.titulo + ".") + "</article>"
+    ).join("");
+  }
+
+  // Catálogo de reparos
+  function opcoes(sel, primeiro, itens) {
+    sel.innerHTML = '<option value="">' + primeiro + "</option>" + itens.map((i) => '<option value="' + esc(i) + '">' + esc(i) + "</option>").join("");
+  }
+  function catalogo() {
+    const dados = lista(APARELHOS);
+    const uniq = (a) => [...new Set(a.filter(Boolean))];
+    opcoes($("#f-marca"), "Todas as marcas", uniq(lista(MARCAS).concat(dados.map((d) => d.marca))));
+    opcoes($("#f-cat"), "Todos os serviços", uniq(lista(CATEGORIAS_REPARO).concat(dados.map((d) => d.categoria))));
+
+    function desenhar() {
+      const q = norm($("#busca").value.trim()), m = $("#f-marca").value, c = $("#f-cat").value;
+      const r = dados.filter((d) =>
+        (!m || d.marca === m) && (!c || d.categoria === c) && (!q || norm(d.marca + " " + d.modelo).includes(q)));
+      const st = $("#status");
+      if (!dados.length) {
+        st.textContent = "Estamos atualizando nossa lista de preços. Peça seu orçamento pelo WhatsApp.";
+      } else if (!r.length) {
+        st.textContent = "Nenhum aparelho encontrado.";
+      } else {
+        st.textContent = r.length + (r.length === 1 ? " serviço encontrado" : " serviços encontrados");
+      }
+      $("#lista-aparelhos").innerHTML = r.map((d) => {
+        const msg = "Olá, Ativa Informática! Gostaria de um orçamento para " + String(d.categoria || "serviço").toLowerCase() +
+          " do " + (d.marca || "") + " " + (d.modelo || "") + ". Vi o valor no site e gostaria de mais informações.";
+        return '<article class="card ' + (d.disponivel === false ? "fora" : "") + '"><p class="meta">' + esc(d.marca) + "</p><h3>" + esc(d.modelo) + "</h3>" +
+          '<p class="meta">' + esc(d.categoria) + "</p>" + (d.descricao ? "<p>" + esc(d.descricao) + "</p>" : "") +
+          (num(d.precoPromo) ? '<span class="tag">Promoção</span>' : "") + (d.disponivel === false ? '<span class="tag off">Indisponível</span>' : "") +
+          preco(d.preco, d.precoPromo) + (d.obs ? '<p class="meta">' + esc(d.obs) + "</p>" : "") +
+          btnWa("Solicitar orçamento", msg) + "</article>";
+      }).join("");
+      ligarWa($("#lista-aparelhos"));
+    }
+    ["#busca", "#f-marca", "#f-cat"].forEach((s) => $(s).addEventListener("input", desenhar));
+    desenhar();
+  }
+
+  // Alexa e receptores
+  function produtos() {
+    const itens = lista(PRODUTOS);
+    const grupos = ["Todos"].concat([...new Set(itens.map((p) => p.grupo).filter(Boolean))]);
+    let atual = "Todos";
+    const chips = $("#chips");
+    function desenhar() {
+      chips.innerHTML = grupos.map((g) => '<button type="button" class="chip" aria-pressed="' + (g === atual) + '" data-g="' + esc(g) + '">' + esc(g) + "</button>").join("");
+      $("#lista-produtos").innerHTML = itens.filter((p) => atual === "Todos" || p.grupo === atual).map((p) => {
+        const off = p.disponivel === false;
+        const msg = off
+          ? "Olá, Ativa Informática! Vi o " + p.nome + " no site, mas está indisponível. Quando chega mais?"
+          : "Olá, Ativa Informática! Tenho interesse em " + p.nome + ". Vi o valor no site e gostaria de mais informações.";
+        return '<article class="card ' + (off ? "fora" : "") + '"><p class="meta">' + esc(p.grupo) + "</p><h3>" + esc(p.nome) + "</h3>" +
+          (off ? '<span class="tag off">Indisponível</span>' : "") + preco(p.preco, p.precoPromo) +
+          (p.obs ? '<p class="meta">' + esc(p.obs) + "</p>" : "") + btnWa(off ? "Perguntar disponibilidade" : "Tenho interesse", msg) + "</article>";
+      }).join("");
+      ligarWa($("#lista-produtos"));
+    }
+    chips.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-g]");
+      if (b) { atual = b.dataset.g; desenhar(); }
+    });
+    $("#aviso-produtos").textContent = typeof AVISO_PRODUTOS === "string" ? AVISO_PRODUTOS : "";
+    if (!itens.length) $("#chips").hidden = true;
+    desenhar();
+  }
+
+  // Promoções vigentes
+  function promocoes() {
+    const hoje = new Date().toLocaleDateString("sv");
+    const vig = lista(PROMOCOES).filter((p) => (!p.inicio || p.inicio <= hoje) && (!p.fim || p.fim >= hoje));
+    if (!vig.length) return; // seção e link ficam ocultos
+    $("#promocoes").hidden = false;
+    $("#lista-promos").innerHTML = vig.map((p) => {
+      const msg = "Olá, Ativa Informática! Vi a promoção \"" + p.titulo + "\" no site e gostaria de aproveitar.";
+      const fim = p.fim ? p.fim.split("-").reverse().join("/") : "";
+      return '<article class="card"><span class="tag">Promoção</span><h3>' + esc(p.titulo) + "</h3>" +
+        (p.descricao ? "<p>" + esc(p.descricao) + "</p>" : "") + (p.servico ? '<p class="meta">Serviço: ' + esc(p.servico) + "</p>" : "") +
+        (lista(p.modelos).length ? '<p class="meta">Modelos: ' + lista(p.modelos).map(esc).join(", ") + "</p>" : "") +
+        preco(p.precoNormal, p.precoPromo) + (fim ? '<p class="meta">Válida até ' + fim + "</p>" : "") + btnWa("Quero essa promoção", msg) + "</article>";
+    }).join("");
+    ligarWa($("#lista-promos"));
+  }
+  const semPromo = () => { const l = $("#nav-promo"); if ($("#promocoes").hidden) l.hidden = true; };
+
+  // Contato e rodapé
+  function contato() {
+    const c = CONFIG;
+    const maps = c.mapsUrl || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.endereco + (c.cidade ? ", " + c.cidade : ""));
+    const tel = "tel:+" + c.whatsapp;
+    const ig = "https://instagram.com/" + c.instagram;
+    $("#lista-contato").innerHTML = [
+      ["Endereço", esc(c.endereco) + (c.cidade ? ", " + esc(c.cidade) : ""), '<a href="' + esc(maps) + '" target="_blank" rel="noopener">Abrir no Google Maps</a>'],
+      ["Telefone", '<a href="' + tel + '">' + esc(c.telefone) + "</a>", ""],
+      ["WhatsApp", esc(c.telefone), btnWa("Chamar no WhatsApp", "Olá, Ativa Informática! Gostaria de atendimento.", "btn-zap btn-peq")],
+      ["Instagram", '<a href="' + ig + '" target="_blank" rel="noopener">@' + esc(c.instagram) + "</a>", ""],
+      ["E-mail", '<a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a>", ""],
+      ["Horário de funcionamento", c.horario ? esc(c.horario) : "Em breve.", ""]
+    ].map((x) => '<article class="card"><h3>' + x[0] + "</h3><p>" + x[1] + "</p>" + x[2] + "</article>").join("");
+    $("#rod-contato").innerHTML = esc(c.telefone) + " · " + '<a href="' + ig + '" target="_blank" rel="noopener">@' + esc(c.instagram) + "</a>";
+    $("#ano").textContent = new Date().getFullYear();
+  }
+
+  // Menu móvel
+  function menu() {
+    const b = $("#burger"), m = $("#menu");
+    const fechar = () => { m.classList.remove("aberto"); b.setAttribute("aria-expanded", "false"); };
+    b.addEventListener("click", () => {
+      const aberto = m.classList.toggle("aberto");
+      b.setAttribute("aria-expanded", String(aberto));
+    });
+    m.addEventListener("click", (e) => { if (e.target.closest("a")) fechar(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") fechar(); });
+  }
+
+  servicos(); catalogo(); produtos(); promocoes(); semPromo(); contato(); menu();
+  ligarWa();
+})();
+
+:root{--az:#007BFF;--az2:#00A6FF;--pt:#080B12;--bg2:#0D1117;--br:#fff;--cz:#B8C0CC;--zap:#25D366;--card:#111826;--borda:#1f2a3d}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--pt);color:var(--br);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 32px);margin:auto}
+.estreito{max-width:720px}
+.skip{position:absolute;left:-999px;background:var(--az);padding:8px 12px;z-index:100}.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--az2);outline-offset:2px}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:50;background:rgba(8,11,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+.topo-in{display:flex;align-items:center;justify-content:space-between;min-height:60px;gap:12px}
+.marca{text-decoration:none;display:flex;align-items:baseline;gap:6px;line-height:1}
+.marca b{font-size:1.5rem;font-weight:900;letter-spacing:.04em;color:var(--az2);text-shadow:0 0 14px rgba(0,166,255,.55)}
+.marca span{font-size:.8rem;font-weight:600;letter-spacing:.18em;color:var(--br)}
+.menu{display:flex;align-items:center;gap:20px}
+.menu a:not(.btn){text-decoration:none;color:var(--cz);font-size:.95rem}
+.menu a:not(.btn):hover{color:var(--br)}
+.burger{display:none;background:none;border:1px solid var(--borda);border-radius:10px;width:44px;height:44px;cursor:pointer;padding:11px}
+.burger i{display:block;height:2px;background:var(--br);margin:5px 0}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-azul{background:var(--az);color:#fff;box-shadow:0 0 18px rgba(0,123,255,.4)}
+.btn-linha{border-color:var(--az2);color:var(--az2)}
+.btn-zap{background:var(--zap);color:#04210f;box-shadow:0 0 22px rgba(37,211,102,.35)}
+.btn-peq{min-height:40px;padding:6px 14px;font-size:.92rem}
+
+/* hero */
+.hero{background:radial-gradient(900px 420px at 85% 20%,rgba(0,123,255,.22),transparent 70%),var(--pt);padding:56px 0 48px;overflow:hidden}
+.hero-in{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.08;font-weight:900;max-width:14em}
+.hero p{color:var(--cz);font-size:1.15rem;margin:18px 0 26px;max-width:34em}
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+.hero-art{width:100%;max-width:320px;justify-self:center;filter:drop-shadow(0 0 10px rgba(0,166,255,.5))}
+.trace{stroke-dasharray:600;stroke-dashoffset:600;animation:tr 2.4s ease-out .3s forwards}
+@keyframes tr{to{stroke-dashoffset:0}}
+
+/* seções */
+.sec{padding:64px 0}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.15;margin-bottom:8px}
+.sub{color:var(--cz);margin-bottom:28px}
+.subtit{font-size:1.5rem;margin:48px 0 16px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--borda);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.card h3{font-size:1.1rem;line-height:1.3}
+.card p{color:var(--cz);font-size:.95rem}
+.card .btn{margin-top:auto}
+.ico{width:46px;height:46px;border-radius:12px;background:rgba(0,123,255,.15);display:grid;place-items:center}
+.ico svg{width:26px;height:26px;stroke:var(--az2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.meta{font-size:.85rem;color:var(--cz)}
+.preco{font-size:1.7rem;font-weight:800;color:var(--az2);line-height:1.1}
+.preco s{font-size:1rem;color:var(--cz);font-weight:400;margin-right:8px}
+.preco.consulte{font-size:1.1rem;color:var(--cz)}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--az);color:#fff}
+.tag.off{background:#3a1f24;color:#ffb4b4}
+.fora{opacity:.7}
+
+/* filtros */
+.filtros{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.campo{display:flex;flex-direction:column;gap:4px;font-size:.88rem;color:var(--cz)}
+input,select{background:var(--card);color:var(--br);border:1px solid var(--borda);border-radius:12px;min-height:46px;padding:0 14px;font:inherit}
+.status{margin:12px 0 16px;color:var(--cz);min-height:1.5em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{background:var(--card);color:var(--cz);border:1px solid var(--borda);border-radius:99px;min-height:40px;padding:0 16px;font:inherit;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--az);color:#fff;border-color:var(--az)}
+.aviso{margin-top:16px;color:var(--cz);font-size:.9rem}
+
+/* promoções */
+.promo{background:linear-gradient(135deg,#00347a,#007BFF)}
+.promo .card{background:rgba(8,11,18,.55);border-color:rgba(255,255,255,.2)}
+
+/* sobre e contato */
+.pontos{list-style:none;padding:0;margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.pontos li{border:1px solid var(--az);border-radius:99px;padding:6px 16px;color:var(--az2)}
+.contato .card a{color:var(--az2);word-break:break-word}
+
+/* rodapé */
+.rodape{background:#05070b;border-top:1px solid var(--borda);padding:40px 0 24px;color:var(--cz);font-size:.92rem}
+.rod-in{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.rod-in p{margin-top:8px}
+.rod-in a{text-decoration:none}.rod-in a:hover{color:var(--br)}
+.rod-fim{border-top:1px solid var(--borda);padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:.85rem}
+.flutuante{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--zap);display:grid;place-items:center;box-shadow:0 4px 18px rgba(0,0,0,.5);z-index:60}
+
+/* celular */
+@media(max-width:820px){
+  .burger{display:block}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--pt);border-bottom:1px solid var(--borda);padding:8px 16px 16px}
+  .menu.aberto{display:flex}
+  .menu a:not(.btn){padding:12px 4px;font-size:1.05rem}
+  .hero{padding:36px 0 32px}
+  .hero-in{grid-template-columns:1fr}
+  .hero-art{display:none}
+  .acoes .btn{flex:1 1 100%}
+  .filtros{grid-template-columns:1fr}
+  .rod-in{grid-template-columns:1fr}
+  .sec{padding:48px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.trace{stroke-dashoffset:0}}
